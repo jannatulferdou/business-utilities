@@ -1,0 +1,637 @@
+﻿@font-face {
+  font-family: Lato;
+  src: url('/fonts/lato-regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Lato;
+  src: url('/fonts/lato-bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Libre Franklin';
+  src: url('/fonts/libre-franklin-semibold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 500 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Libre Franklin';
+  src: url('/fonts/libre-franklin-bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}
+
+:root {
+  --color-blue: #0075ff;
+  --color-navy: #051229;
+  --color-text: #364052;
+  --color-muted: #606a78;
+  --color-page: #f7f7f7;
+  --color-panel: #e1e8f0;
+  --color-border: #dce4ed;
+  --font-heading: 'Libre Franklin', Arial, sans-serif;
+  font-family: Lato, Arial, sans-serif;
+  color: var(--color-text);
+  background: var(--color-page);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+button,
+input {
+  font: inherit;
+}
+button,
+a,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+button,
+summary {
+  cursor: pointer;
+}
+button {
+  color: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a,
+button,
+summary {
+  touch-action: manipulation;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  color: var(--color-navy);
+  font-weight: 600;
+  line-height: 1.2;
+}
+p {
+  margin: 0 0 18px;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 5px;
+}
+::selection {
+  color: white;
+  background: var(--color-blue);
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-page);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-blue);
+  border-radius: 6px;
+}
+.container {
+  width: 100%;
+  max-width: 1140px;
+  padding-inline: 12px;
+  margin-inline: auto;
+}
+.section-space {
+  padding-block: 120px;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  vertical-align: middle;
+}
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 24px;
+  padding: 12px 24px;
+  color: white;
+  background: var(--color-navy);
+  border-radius: 8px;
+  z-index: 100;
+  transform: translateY(-180%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Shared circular-arrow calls to action. */
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  min-height: 56px;
+  padding: 5px 24px 5px 5px;
+  border-radius: 50px;
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.action-link--dark {
+  color: white;
+  background: var(--color-navy);
+}
+.action-link--blue {
+  flex-direction: row-reverse;
+  gap: 12px;
+  padding: 14px 24px;
+  color: white;
+  background: var(--color-blue);
+}
+.action-link__icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: white;
+  background: var(--color-blue);
+}
+.action-link__icon .icon {
+  transition: transform 0.2s;
+}
+.action-link--blue .action-link__icon {
+  width: 28px;
+  height: 28px;
+  background: #ffffff26;
+}
+.action-link--blue .icon {
+  width: 18px;
+  height: 18px;
+}
+.action-link:hover {
+  transform: translateY(-2px);
+}
+.action-link--dark:hover,
+.action-link--blue:hover {
+  background: #005fcf;
+}
+.action-link:hover .action-link__icon .icon {
+  transform: translateX(3px);
+}
+
+/* Reference hero: pale blue backdrop, compact copy and original image. */
+.hero {
+  min-height: 540px;
+  padding: 64px 0;
+  background: var(--color-panel);
+  display: flex;
+  align-items: center;
+}
+.hero__inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.hero__content {
+  flex: 0.92 1 0;
+  min-width: 0;
+}
+.brand-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 8px;
+  margin-bottom: 20px;
+  background: var(--color-page);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
+}
+.brand-tag > span {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-blue);
+  color: white;
+  font-size: 12px;
+}
+.hero h1 {
+  margin-bottom: 10px;
+  font-size: 48px;
+  line-height: 1.08;
+  letter-spacing: -1.4px;
+}
+.hero__description {
+  max-width: 510px;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+.hero__benefits {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 45px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.hero__benefits li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.hero__benefits .icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-blue);
+}
+.hero__image {
+  flex: 1.08 1 0;
+  min-width: 0;
+}
+.hero__image img {
+  width: 100%;
+  aspect-ratio: 678 / 452;
+  object-fit: cover;
+  border: 1px solid #05122914;
+  border-radius: 18px;
+  box-shadow: 0 22px 55px #05122924;
+}
+
+/* Business energy service cards. */
+.energy-services h2 {
+  margin-bottom: 22px;
+  font-size: 24px;
+}
+.energy-services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.service-card {
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  background: #f1f5f9;
+}
+.service-card__image {
+  aspect-ratio: 16 / 9;
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+.service-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s;
+}
+.service-card:hover img {
+  transform: scale(1.035);
+}
+.service-card h3 {
+  min-height: 2.4em;
+  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 1.25;
+}
+.service-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+}
+/* Native disclosure controls keep all FAQ interactions accessible. */
+.faq-section {
+  padding-block: 80px;
+  background: var(--color-panel);
+}
+.faq-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 60px;
+  align-items: start;
+}
+.eyebrow {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background: #0075ff1a;
+  color: var(--color-blue);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.faq-introduction h2 {
+  margin: 20px 0 24px;
+  color: #111827;
+  font-size: 48px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+}
+.faq-introduction h2 span {
+  display: block;
+  color: var(--color-blue);
+}
+.faq-introduction p {
+  color: var(--color-muted);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.faq-introduction .action-link {
+  margin-top: 20px;
+}
+.faq-item {
+  margin-bottom: 15px;
+  border-radius: 16px;
+  background: white;
+  overflow: hidden;
+}
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 24px;
+  color: #111827;
+  font-weight: 700;
+  line-height: 1.6;
+  list-style: none;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item summary:hover {
+  color: var(--color-blue);
+}
+.faq-item__toggle {
+  display: grid;
+  place-items: center;
+  flex: 0 0 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--color-blue);
+  background: #0075ff1a;
+  transition: transform 0.2s;
+}
+.faq-item__toggle .icon {
+  width: 18px;
+  height: 18px;
+}
+.faq-item[open] .faq-item__toggle {
+  transform: rotate(45deg);
+}
+.faq-item__answer {
+  padding: 0 24px 22px;
+}
+.faq-item__answer p {
+  padding-top: 16px;
+  border-top: 1px solid var(--color-panel);
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.8;
+}
+.faq-contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 30px;
+  padding: 25px 30px;
+  border-radius: 16px;
+  background: var(--color-blue);
+  color: white;
+}
+.faq-contact p {
+  margin: 0;
+  font-weight: 700;
+}
+.faq-contact .faq-contact__label {
+  margin-bottom: 5px;
+  color: #d7eaff;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.faq-contact > a {
+  flex-shrink: 0;
+  padding: 12px 22px;
+  border-radius: 50px;
+  background: white;
+  color: var(--color-blue);
+  font-weight: 700;
+}
+.faq-contact > a:hover {
+  background: #e8f2ff;
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+  .hero {
+    min-height: 580px;
+  }
+  .hero__content {
+    max-width: 580px;
+  }
+  .hero__image {
+    max-width: 680px;
+  }
+}
+@media (max-width: 1199px) {
+  .container {
+    max-width: 960px;
+  }
+  .hero h1 {
+    font-size: 44px;
+  }
+  .hero__description {
+    font-size: 16px;
+  }
+  .faq-layout {
+    gap: 40px;
+  }
+  .faq-introduction h2 {
+    font-size: 40px;
+  }
+  .faq-contact {
+    padding: 22px;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 991px) {
+  .container {
+    max-width: 720px;
+  }
+  .section-space {
+    padding-block: 80px;
+  }
+  .hero {
+    min-height: auto;
+    padding: 64px 0;
+  }
+  .hero__inner {
+    flex-direction: column;
+    gap: 40px;
+    align-items: stretch;
+  }
+  .hero__content,
+  .hero__image {
+    flex: auto;
+  }
+  .hero h1 {
+    font-size: 44px;
+  }
+  .hero__description {
+    max-width: 600px;
+    font-size: 18px;
+  }
+  .hero__benefits {
+    margin-bottom: 30px;
+  }
+  .hero__image img {
+    max-height: 430px;
+  }
+  .service-card {
+    padding: 14px;
+  }
+  .service-card h3 {
+    font-size: 16px;
+    min-height: 2.5em;
+  }
+  .faq-layout {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+  .faq-introduction p {
+    max-width: 620px;
+  }
+  .faq-contact {
+    flex-wrap: nowrap;
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    max-width: 540px;
+    padding-inline: 20px;
+  }
+  .section-space {
+    padding-block: 64px;
+  }
+  .energy-services__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .service-card {
+    padding: 18px;
+  }
+  .service-card h3 {
+    min-height: auto;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  .service-card p {
+    font-size: 16px;
+  }
+  .faq-section {
+    padding-block: 64px;
+  }
+  .faq-introduction h2 {
+    font-size: 38px;
+  }
+  .faq-item summary {
+    padding: 20px;
+    font-size: 15px;
+    gap: 16px;
+  }
+  .faq-contact {
+    padding: 24px;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 575px) {
+  .hero {
+    padding: 40px 0 44px;
+  }
+  .hero__inner {
+    gap: 32px;
+  }
+  .brand-tag {
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 36px;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+  .hero__description {
+    font-size: 16px;
+  }
+  .hero__benefits {
+    font-size: 15px;
+    gap: 12px;
+  }
+  .hero__image img {
+    border-radius: 14px;
+  }
+  .energy-services h2 {
+    font-size: 23px;
+  }
+  .faq-introduction h2 {
+    font-size: 36px;
+  }
+  .faq-item summary {
+    padding: 18px;
+  }
+  .faq-item__toggle {
+    flex-basis: 32px;
+    height: 32px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
