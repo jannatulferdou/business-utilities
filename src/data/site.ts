@@ -9,8 +9,22 @@ interface FrequentlyAskedQuestion {
   answer: string
 }
 
-export const contactUrl =
-  'mailto:contactus@dabusinesssolutions.com?subject=Business%20utilities%20enquiry'
+export const contactUrl = 'https://dabusinesssolutions.com/contact.html'
+
+export const serviceLinks = [
+  { title: 'Business Utilities', href: '#utilities-details', current: true },
+  {
+    title: 'Payment Service & PDQ Machine',
+    href: 'https://dabusinesssolutions.com/payment-service-pdq-machine.html',
+  },
+  {
+    title: 'Business Telephone & Broadband',
+    href: 'https://dabusinesssolutions.com/business-telephone-and-broadband.html',
+  },
+  { title: 'Business Bank', href: 'https://dabusinesssolutions.com/business-bank.html' },
+  { title: 'Business Insurance', href: 'https://dabusinesssolutions.com/business-insurance.html' },
+  { title: 'IT Management', href: 'https://dabusinesssolutions.com/web-development.html' },
+]
 
 export const energyServices: readonly EnergyService[] = [
   {

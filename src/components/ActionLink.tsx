@@ -5,7 +5,7 @@ import { Icon } from './Icon'
 interface ActionLinkProps {
   children: ReactNode
   href?: string
-  variant?: 'dark' | 'blue'
+  variant?: 'dark' | 'blue' | 'white'
   className?: string
 }
 
